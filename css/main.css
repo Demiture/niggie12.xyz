@@ -1,45 +1,58 @@
 /* Main CSS */
 
-#main-container {
+#mainContainer {
   display: none;
   background-color: #000;
   height: 100%;
   text-align: center;
   vertical-align: top;
-  padding: 5%;
+  padding: 2%;
   box-sizing: border-box;
 }
 
-.section-container {
-  text-align: center;
+.sectionContainer {
+  text-align: center; font-size: 0;
   vertical-align: top;
   display: inline-block;
-  font-size: 0;
 }
 
 /* Left side */
-.section-box {
+.sectionBox {
   border: 4px solid #fff;
   display: inline-block;
   width: 600px; height: 300px;
   margin: 10px;
   vertical-align: top;
 }
-.section-box-cover {
+.sectionBox-text {
+  border: 4px solid #fff;
   display: inline-block;
-  width: 640px; height: 700px;
+  width: 600px; height: 180px;
+  margin: 10px;
+  vertical-align: top;
+}
+.sectionBox-con {
+  border: 4px solid #fff;
+  display: inline-block;
+  width: 600px; height: 92px;
+  margin: 10px;
+  vertical-align: top;
+  text-align: left;
+}
+.sectionBox-cover {
+  display: inline-block;
+  width: 640px;
   vertical-align: top;
 }
 
 .section-image {
   background-image: url('../img/main/room.gif');
-  background-position: center;
-  background-size: cover;
+  background-position: center; background-size: cover;
 }
 
 .disableSave {
-  -webkit-user-select:none;
-  -webkit-touch-callout:none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 /* Convo Box CSS */
@@ -48,8 +61,7 @@
   text-align: center;
 }
 .conversation {
-  font-size: 26px;
-  text-align: left;
+  font-size: 26px; text-align: left;
   padding-bottom: 5px;
 }
 .convo-space {
@@ -58,52 +70,141 @@
 
 .controls {
   display: inline-block;
-  font-family: cyber;
-  font-size: 20px;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  background-color: #fff;
-  color: #000;
+  font-family: vcr; font-size: 20px; text-align: center; text-decoration: none; text-transform: uppercase;
+  background-color: #fff; color: #000;
+  width: 120px; height: 92px;
   border: none;
-  width: 90px; height: 35px;
-  margin: 5px;
+  margin: 0;
   cursor: pointer;
+  transition: background-color 0.5s;
 }
-#progress-bar[value] {
-  -webkit-appearance: none;
-   appearance: none;
-
-  width: 190px;
-  height: 5px;
-  background-color: #202020;
-  border: 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+.controls:hover {
+  background-color: #707070;
 }
 
 /* Phone */
-.section-box-phone {
+.sectionBox-phone {
   border: 4px solid #fff;
+  border-radius: 5px;
   display: inline-block;
   width: 380px; height: 628px;
   margin: 10px 0;
   vertical-align: top;
 }
-.phone-bg {
+.phoneBg {
   background-image: url('../img/main/phone-bg.png');
   background-position: center;
   background-size: cover;
 }
 
-.phone-app-container {
+.phoneApp-container {
   margin: 20px;
   text-align: center;
 }
-.phone-app {
+.phoneApp {
   display: inline-block;
   width: 330px; height: 102px;
   background-position: center;
   background-size: cover;
   margin: 10px 0;
   cursor: pointer;
+}
+
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: #000;
+  background-color: rgba(0,0,0,0.4);
+}
+.popContent {
+  background-color: #101010;
+  margin: auto;
+  padding: 20px;
+  border: 4px solid #888;
+  border-radius: 20px;
+  width: 40%;
+}
+.chachaslide {
+	animation: slide 0.8s;
+}
+@keyframes slide {
+  from { padding-top: 300px; }
+  to { padding-top: 100px; }
+}
+
+.modalTitle {
+  font-size: 26px;
+  text-decoration: underline;
+}
+.contributorCov {
+  text-align: center;
+  padding: 50px;
+}
+.contributor {
+  display: inline-block;
+  vertical-align: top;
+  margin: 20px;
+  width: 150px; height: 150px;
+  border-radius: 5px;
+  background-color: #202020;
+  background-position: center; background-size: cover;
+  box-shadow: #000 0px 0px 0px;
+  transition: box-shadow 0.5s;
+}
+.contributor:hover {
+  box-shadow: #ff0000 3px 2px 2px
+}
+.contributorText {
+  line-height: 150px;
+  vertical-align: middle;
+}
+
+#mobile-warning {
+  display: none;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 1367px) {
+  #mainContainer {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 640px) {
+  .sectionBox-cover {
+    text-align: left;
+  }
+  .sectionBox {
+    width: 300px; height: 160px;
+  }
+  .sectionBox-text {
+    width: 300px; height: 160px;
+  }
+  .convo-box {
+    margin: 10px;
+  }
+  .conversation {
+    font-size: 20px;
+  }
+  .sectionBox-con {
+    width: 300px; height: 30px;
+  }
+  .controls {
+    width: 60px; height: 30px;
+    font-size: 12px
+  }
+  .sectionBox-phone {
+    display: none;
+  }
+  #mobile-warning {
+    display: block;
+    text-align: left;
+    margin: 10px;
+  }
 }

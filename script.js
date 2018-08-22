@@ -7,18 +7,18 @@
 		});
 	});
 
-	/* Date script thrown together by Demi x */
+	// Date script thrown together by Demi x
 	var d = new Date();
 	var days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
 
 	document.getElementById("date").innerHTML = days[d.getDay()] + " " + d.getDate() + "/" + d.getMonth();
 
-	/* Unlock script to "unlock" the page, by Demi x */
+	// Unlock script to "unlock" the page, by Demi x
 	var timeoutId = 0,
   	holdTime = 1000,
 	holdTrigger = $('.holdTrigger'),
 	welcomeLayerV = document.getElementById("welcomeLayer"),
-	mainContainer = document.getElementById("main-container");
+	mainContainer = document.getElementById("mainContainer");
 
 	holdTrigger.mousedown(function() {
     	timeoutId = setTimeout(menuToggle, holdTime);
@@ -31,26 +31,124 @@
         $("#welcomeLayer").slideToggle("slow");
         $("#unlock").slideToggle("fast");
 		$("#note").slideToggle("fast");
-		$("#main-container").slideToggle("slow");
+		$("#mainContainer").slideToggle("slow");
 	});
-	/* i think this jquery event should work for mobiles */
+	// i think this jquery event should work for mobiles
 
 	window.oncontextmenu = function(event) {
 		event.preventDefault();
 		event.stopPropagation();
 		return false;
 	};
-	/* script to prevent context menus popping up */
+	// script to prevent context menus popping up
 
 	function menuToggle() {
-		/* TODO: Add fade effect here tbh fam -- DONE(?) */
+		// TODO: Add fade effect here tbh fam -- DONE(?)
         $(".jill").slideToggle("slow");
         $("#welcomeLayer").slideToggle("slow");
         $("#unlock").slideToggle("fast");
 		$("#note").slideToggle("fast");
-		$("#main-container").slideToggle("slow");
+		$("#mainContainer").slideToggle("slow");
 		
 	}
+
+
+
+//////////// Phone Apps ////////////
+
+// Welcome Open
+$(document).ready(function(){
+    $("#appWelcome").click(function(){
+        $("#mainContainer").toggle("slow");
+		$(".welcomeCover").slideToggle("slow");
+		$(".appClose").toggle("scale, 1500");
+    });
+});
+// Welcome Close
+$(document).ready(function(){
+    $("#appWelcome-close").click(function(){
+        $("#mainContainer").toggle("slow");
+		$(".welcomeCover").slideToggle("slow");
+		$(".appClose").toggle("scale, 1500");
+    });
+});
+
+// Dangeru Open
+$(document).ready(function(){
+    $("#appDangeru").click(function(){
+        $("#mainContainer").toggle("slow");
+		$(".dangerCover").slideToggle("slow");
+		$(".appClose").toggle("scale, 1500");
+    });
+});
+// Dangeru Close
+$(document).ready(function(){
+    $("#appDangeru-close").click(function(){
+        $("#mainContainer").toggle("slow");
+		$(".dangerCover").slideToggle("slow");
+		$(".appClose").toggle("scale, 1500");
+    });
+});
+
+// Gallery Open
+$(document).ready(function(){
+    $("#appGallery").click(function(){
+        $("#mainContainer").toggle("slow");
+		$(".galleryCover").slideToggle("slow");
+		$(".appClose").toggle("scale, 1500");
+    });
+});
+// Gallery Close
+$(document).ready(function(){
+    $("#appGallery-close").click(function(){
+        $("#mainContainer").toggle("slow");
+		$(".galleryCover").slideToggle("slow");
+		$(".appClose").toggle("scale, 1500");
+    });
+});
+
+// Augmented Eye Open
+$(document).ready(function(){
+    $("#appAugeye").click(function(){
+        $("#mainContainer").toggle("slow");
+		$(".augeyeCover").slideToggle("slow");
+		$(".appClose").toggle("scale, 1500");
+    });
+});
+// Augmented Eye Close
+$(document).ready(function(){
+    $("#appAugeye-close").click(function(){
+        $("#mainContainer").toggle("slow");
+		$(".augeyeCover").slideToggle("slow");
+		$(".appClose").toggle("scale, 1500");
+    });
+});
+
+
+// Go back to lock screen
+$(document).ready(function(){
+    $("#relock").click(function(){
+		$(".jill").slideToggle("slow");
+        $("#welcomeLayer").slideToggle("slow");
+        $("#unlock").slideToggle("fast");
+		$("#note").slideToggle("fast");
+		$("#mainContainer").slideToggle("slow");
+    });
+});
+
+//////////// Phone Apps ////////////
+
+
+// TEMP MOBILE FIX
+$(document).ready(function(){
+    $("#note").click(function(){
+		$(".jill").slideToggle("slow");
+        $("#welcomeLayer").slideToggle("slow");
+        $("#unlock").slideToggle("fast");
+		$("#note").slideToggle("fast");
+		$("#mainContainer").slideToggle("slow");
+    });
+});
 
 
 // Volume
@@ -65,44 +163,21 @@ function pauseAudio() {
 	x.pause(); 
 } 
 
-// Not my code, https://codepen.io/blackjacques/pen/LLQKKJ
-var player = document.getElementById('music'); // id for audio element
-var duration; // Duration of audio clip
-progressBar  = document.getElementById('progress-bar');
-source       = document.getElementById('audioSource');
+// Modal
 
-// Add a listener for the timeupdate event so we can update the progress bar
-player.addEventListener('timeupdate', updateProgressBar, false);
-			
-// Update the progress bar
-function updateProgressBar() {
-// Work out how much of the media has played via the duration and currentTime parameters
-var percentage = Math.floor((100 / player.duration) * player.currentTime);
-// Update the progress bar's value
-progressBar.value = percentage;
-// Update the progress bar's text (for browsers that don't support the progress element)
-progressBar.innerHTML = progressBar.title = percentage + '% played';
+var modal = document.getElementById('popup');
+var btn = document.getElementById("creditBtn");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+	modal.style.display = "block";
+	modal.classList.add("chachaslide");
 }
-        
-function resetPlayer() {
-progressBar.value = 0;
-//clear the current song
-player.src = '';
-// Move the media back to the start
-player.currentTime = 0;
-// Set the play/pause button to 'play'
-changeButtonType(btnPlayPause, 'play');
-}  
-
-
-// Hide/Show
-/*
-$(document).ready(function(){
-    $("#unlock").click(function(){
-        $(".main-container").slideToggle("slow");
-        $(".jill").slideToggle("slow");
-        $(".landing-cover").slideToggle("slow");
-        $("#unlock").slideToggle("fast");
-        $("#note").slideToggle("fast");
-    });
-}); */
+span.onclick = function() {
+	modal.style.display = "none";
+}
+window.onclick = function(event) {
+	if (event.target == modal) {
+		modal.style.display = "none";
+	}
+}
